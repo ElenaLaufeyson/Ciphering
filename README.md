@@ -5,5 +5,5 @@
 
 Вид коммандной строки: Ciphering [-c key] [-d key] inputname.txt [-o outputename.txt]
 
-Командная строка для шифрации: -c 109a834 in.txt -o out.txt
-Командная строка для дешифрации: -d 109a834 out.txt
+Командная строка для шифрации: -c cafe in.txt -o out.txt
+Командная строка для дешифрации: -d cafe out.txt
