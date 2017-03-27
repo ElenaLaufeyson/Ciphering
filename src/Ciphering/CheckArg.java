@@ -13,7 +13,7 @@ public class CheckArg {
                     "inputname.txt [-o outputname.txt");
         if (!args[0].equals("-c") && !args[0].equals("-d"))
             throw new IllegalArgumentException("Expected key -c or -d");
-        if (!check16Syst(args[1]) || args[1].length()%2 != 0)
+        if (!check16Syst(args[1]))
             throw new IllegalArgumentException("Wrong key - not hexadecimal number or wrong byte");
         if (!(new File(args[2]).exists()))
             throw new IllegalArgumentException("Input file doesn't exist");
@@ -39,6 +39,7 @@ public class CheckArg {
 
 
     private Boolean check16Syst(String args1) {
+        if (args1.length()%2 != 0) return false;
         Pattern check = Pattern.compile("^[a-fA-F0-9]*$");
         Matcher match = check.matcher(args1);
         return match.matches();
