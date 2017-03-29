@@ -69,8 +69,10 @@ public class CiphTests {
     @Tag("Cheking CiphXor")
     @Test
     void CheckCiphXor() throws IOException {
-        Main.convert("cafe", "in.txt", "out.txt");
-        Main.convert("cafe", "out.txt", "out_out.txt");
+        FileCoder code1 = new FileCoder("cafe","in.txt", "out.txt");
+        FileCoder code2 = new FileCoder("cafe","out.txt", "out_out.txt");
+        code1.convert();
+        code2.convert();
         FileInputStream file1 = new FileInputStream("in.txt");
         FileInputStream file2 = new FileInputStream(("out_out.txt"));
         int b1=0,b2=0;
@@ -86,4 +88,43 @@ public class CiphTests {
         file2.close();
     }
 
+    @Tag("Cheking CiphXorC")
+    @Test
+    void CheckCiphXorC() throws IOException {
+        FileCoder code1 = new FileCoder("cafe","in.txt", "out.txt");
+        code1.convert();
+        FileInputStream file1 = new FileInputStream("out.txt");
+        FileInputStream file2 = new FileInputStream(("testcode.txt"));
+        int b1=0,b2=0;
+        try {
+            while ((b1 = file1.read()) != -1) {
+                b2 = file2.read();
+                if (b1 != b2) throw new IllegalAccessError("Error ciphering");
+            }
+        } catch (IllegalAccessError e) {
+            System.out.println("Error ciphering");
+        }
+        file1.close();
+        file2.close();
+    }
+
+    @Tag("Cheking CiphXorD")
+    @Test
+    void CheckCiphXorD() throws IOException {
+        FileCoder code1 = new FileCoder("cafe","out.txt", "out_out.txt");
+        code1.convert();
+        FileInputStream file1 = new FileInputStream("out_out.txt");
+        FileInputStream file2 = new FileInputStream(("testdecode.txt"));
+        int b1=0,b2=0;
+        try {
+            while ((b1 = file1.read()) != -1) {
+                b2 = file2.read();
+                if (b1 != b2) throw new IllegalAccessError("Error ciphering");
+            }
+        } catch (IllegalAccessError e) {
+            System.out.println("Error ciphering");
+        }
+        file1.close();
+        file2.close();
+    }
 }
