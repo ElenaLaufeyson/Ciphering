@@ -39,8 +39,7 @@ public class CheckArg {
 
 
     private Boolean check16Syst(String args1) {
-        if (args1.length()%2 != 0) return false;
-        Pattern check = Pattern.compile("^[a-fA-F0-9]*$");
+        Pattern check = Pattern.compile("^(([a-fA-F0-9]{2})*)$");
         Matcher match = check.matcher(args1);
         return match.matches();
     }
