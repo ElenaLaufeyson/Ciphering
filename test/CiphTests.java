@@ -16,7 +16,7 @@ public class CiphTests {
         String s = "";
         String args[] = s.split("\\s+");
         assertThrows(IllegalArgumentException.class,
-                () -> new CheckArg(args));
+                () -> new CheckArg().ReadCommLine(args));
     }
 
     @Tag("Checking -c/-d & key")
@@ -25,19 +25,19 @@ public class CiphTests {
         String s = "cafe inputname.txt";
         String args[] = s.split("\\s+");
         assertThrows(IllegalArgumentException.class,
-                () -> new CheckArg(args));
+                () -> new CheckArg().ReadCommLine(args));
         s = "-s cafe in.txt";
         String args1[] = s.split("\\s+");
         assertThrows(IllegalArgumentException.class,
-                () -> new CheckArg(args1));
+                () -> new CheckArg().ReadCommLine(args1));
         s = "-c bad inputname.txt";
         String args2[] = s.split("\\s+");
         assertThrows(IllegalArgumentException.class,
-                () -> new CheckArg(args2));
+                () -> new CheckArg().ReadCommLine(args2));
         s = "-d sdaf in.txt";
         String args3[] = s.split("\\s+");
         assertThrows(IllegalArgumentException.class,
-                () -> new CheckArg(args3));
+                () -> new CheckArg().ReadCommLine(args3));
     }
 
     @Tag("Checking inputname")
@@ -46,7 +46,7 @@ public class CiphTests {
         String s = "-c cafe ";
         String args[] = s.split("\\s+");
         assertThrows(IllegalArgumentException.class,
-                () -> new CheckArg(args));
+                () -> new CheckArg().ReadCommLine(args));
     }
 
     @Tag("Checking -o & outputname")
@@ -55,15 +55,15 @@ public class CiphTests {
         String s = "-c cafe in.txt -o";
         String args[] = s.split("\\s+");
         assertThrows(IllegalArgumentException.class,
-                () -> new CheckArg(args));
+                () -> new CheckArg().ReadCommLine(args));
         s = "-c cafe in.txt -p";
         String args1[] = s.split("\\s+");
         assertThrows(IllegalArgumentException.class,
-                () -> new CheckArg(args1));
+                () -> new CheckArg().ReadCommLine(args1));
         s = "-c cafe in.txt out.txt";
         String args2[] = s.split("\\s+");
         assertThrows(IllegalArgumentException.class,
-                () -> new CheckArg(args2));
+                () -> new CheckArg().ReadCommLine(args2));
         }
 
     @Tag("Cheking CiphXor")
