@@ -70,9 +70,8 @@ public class CiphTests {
     @Test
     void CheckCiphXor() throws IOException {
         FileCoder code1 = new FileCoder("cafe");
-        FileCoder code2 = new FileCoder("cafe");
         code1.convert("in.txt", "out.txt");
-        code2.convert("out.txt", "out_out.txt");
+        code1.convert("out.txt", "out_out.txt");
         FileInputStream file1 = new FileInputStream("in.txt");
         FileInputStream file2 = new FileInputStream(("out_out.txt"));
         int b1 = 0, b2 = 0;
