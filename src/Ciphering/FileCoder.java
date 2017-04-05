@@ -4,15 +4,13 @@ import java.io.*;
 
 public class FileCoder {
 
-    private String inputFile, outputFile, key;
+    private String key;
 
-    public FileCoder(String key, String inputFile, String outputFile) {
-        this.inputFile = inputFile;
-        this.outputFile = outputFile;
+    public FileCoder(String key) {
         this.key = key;
     }
 
-    public void convert () {
+    public void convert (String inputFile, String outputFile) {
         CiphXor coder = new CiphXor(key);
         FileInputStream fileIn = null;
         FileOutputStream fileOut = null;
